@@ -1,0 +1,28 @@
+Programa	         -> Librerias Variables Main
+Librerias	         -> #include<identificador(.h)?> Librerias? 
+Variables            -> tipoDato ListaIdentificadores; Variables?
+ListaIdentificadores -> identificador(,ListaIdentificadores)?
+Main		         -> void main() BloqueInstrucciones
+BloqueInstrucciones  -> { ListaInstrucciones }
+ListaInstrucciones 	 -> Instruccion ListaInstrucciones?
+Instrccion           -> Printf  | Scanf | If | For | While | Switch | Asignacion 
+Printf               -> printf(cadena,ListaIdentificadores?);
+Scanf	             -> scanf(cadena,ListadeAmpersas);
+ListadeAmpersas	     -> & identificador(,ListadeAmpersas)?
+If			         -> if(Condicion) BloqueInstrucciones | Intruccion (else BloqueInstrcciones | Instruccion)?
+***Condicion	     -> !? Expresion oprRelacional Expresion 
+***For	             -> for(identificador=Expresion; Condicion; identificador incTermino) BloqueInstrucciones | Instruccion
+While	             -> while(Condicion) BloqueInstrucciones | Instruccion
+=====================================================================================================
+Switch               -> switch(Expresion)  {VariosCase Default}
+VariosCase           -> case numero: VariosCase | CaseInstruccion
+CaseInstruccion      -> Instruccion| BloqueInstrucciones Break
+Break                -> break;? VariosCase
+Default              -> default:? Intruccion | BloqueInstrcciones  
+=====================================================================================================
+Asignacion	         -> identificador = Expresion;
+Expresion            -> Termino MasTermino 
+MasTermino	         -> (opTermino Termino)? 
+Termino	             -> Factor PorFactor 
+PorFactor	         -> (opFactor Factor)?
+Factor	             -> numero | identificador | (Expresion) 
